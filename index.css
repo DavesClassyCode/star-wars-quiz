@@ -71,7 +71,7 @@ h1 {
     color: #ffffff;
     font-size: 2em;
     text-transform: uppercase;
-    font-weight: normal;
+    font-weight: bold;
     animation: glow-red 1.5s linear infinite;
 }
 button {
@@ -84,7 +84,7 @@ button {
     border-radius: 0;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 40px
+    margin-top: 40px;
 }
 button:hover, button:focus {
     background-color: #eb52d2;
@@ -100,6 +100,7 @@ label {
     background-color: #ececec;
     color: #363946;
     text-transform: uppercase;
+    font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease-out;
     line-height: 22px;
@@ -107,6 +108,7 @@ label {
 label:hover, label:focus {
     background-color: #363946;
     color: #fafafa;
+    animation: glow-blue 1.5s linear infinite;
 }
 fieldset {
     border: none;
@@ -126,7 +128,7 @@ input {
     top: 2px;
 }
 input:checked {
-    border: 8px solid aqua;
+    border: 8px solid rgb(84, 212, 212);
 }
 input[type=radio] {
     flex: 0 0 auto;
@@ -150,7 +152,7 @@ h2 {
     text-shadow: 0 0 9px red; 
   }
 }
-  @keyframes glow-blue {
+@keyframes glow-blue {
     from {
       text-shadow: 0 0 9px aqua; 
     }
@@ -286,24 +288,26 @@ h3 {
     .questionAnswerForm {
         width: 100%;
         padding: 20px;
-        margin-top: 0
+        margin-top: 0;
     }
     label {
         font-size: 16px;
-        padding: 15px
+        padding: 15px;
     }
     .correctFeedback img {
         width: 100px;
-        height: auto
+        height: auto;
     }
     .correctFeedback p {
         font-size: 16px;
-        margin: 0 15px
+        margin: 0 15px;
     }
     .results p:first-of-type {
-        font-size: 18px
+        font-size: 18px;
+        animation: glow-red 1.5s linear infinite;
     }
     h3 {
-        font-size: 25px
+        font-size: 25px;
+        animation: glow-red 1.5s linear infinite;
     }
 }
