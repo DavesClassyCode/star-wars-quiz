@@ -8,7 +8,7 @@ body {
     background-color: #000000;
     background: url('tatooine-background.jpg') fixed;
     background-size: cover;
-    color: #000000;
+    color: #ffffff;
 }
 /*header styling*/
 
@@ -163,6 +163,17 @@ h2 {
       text-shadow: 0 0 9px aqua; 
     }
 }
+@keyframes glow-red {
+    from {
+      text-shadow: 0 0 9px red; 
+    }
+    50% {
+      text-shadow: 0 0 18px red; 
+    }
+    to {
+      text-shadow: 0 0 9px red; 
+    }
+}
 form button {
     padding: 20px;
     border: none;
@@ -203,10 +214,11 @@ form button:hover, form button:focus {
     text-transform: uppercase;
     margin-left: 20px;
     margin-right: 20px;
+    animation: glow-black 1.5s linear infinite;
 }
 .correctFeedback span {
     color: #ffffff;
-    animation: glow-black 1.5s linear infinite;
+    animation: glow-red 1.5s linear infinite;
 }
 .correctFeedback img {
     width: 150px;
