@@ -36,10 +36,10 @@ header::after {
     animation: glow-black 1.5s linear infinite;
 }
 .col-4 {
-    width: 33.33%
+    width: 33.33%;
 }
 .col-8 {
-    width: 66.67%
+    width: 66.67%;
 }
 .logo {
     height: 150px;
@@ -55,7 +55,7 @@ header ul li {
 }
 header ul {
     text-align: right;
-    margin-top: 50px
+    margin-top: 50px;
 }
 /*Quiz start screen styling*/
 
@@ -192,17 +192,17 @@ form button:hover, form button:focus {
     margin: 0 auto;
     text-align: center;
     background: none;
-    padding-top: 40px
+    padding-top: 40px;
 }
 .correctFeedback button {
-    width: 100%
+    width: 100%;
 }
 .correctFeedback p {
     font-size: 1.5em;
     line-height: 1.5em;
     text-transform: uppercase;
     margin-left: 20px;
-    margin-right: 20px
+    margin-right: 20px;
 }
 .correctFeedback span {
     color: #ffffff;
@@ -216,7 +216,7 @@ form button:hover, form button:focus {
     background-color: black;
     margin: auto;
     padding: 10px;
-    margin-bottom: 20px
+    margin-bottom: 20px;
 }
 h3 {
     color: #ffffff;
@@ -242,13 +242,13 @@ h3 {
     animation: glow-black 1.5s linear infinite;
 }
 .restartButton {
-    margin-top: 40px
+    margin-top: 40px;
 }
 @media screen and (max-width: 1190px) {
     .questionAnswerForm,
     .quizStart {
         width: 80%;
-        margin-bottom: 100px
+        margin-bottom: 100px;
     }
 }
 @media screen and (max-width: 815px) {
@@ -260,10 +260,10 @@ h3 {
     }
     header ul {
         margin: 10px;
-        text-align: center
+        text-align: center;
     }
     h1 {
-        font-size: 1.5em
+        font-size: 1.5em;
     }
     header ul li {
         padding: 10px;
@@ -283,7 +283,7 @@ h3 {
         margin-top: 0;
     }
     h2 {
-        font-size: 18px
+        font-size: 18px;
     }
     .questionAnswerForm {
         width: 100%;
