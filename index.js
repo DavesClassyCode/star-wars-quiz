@@ -142,7 +142,7 @@ function renderResults () {
           </div>`);
   } else {
     $('.questionAnswerForm').html(`<div class="results correctFeedback">
-            <h3>Aren't you a little short for a stormtrooper?</h3>
+            <h3>You have failed me for the last time!</h3>
             <img src="vader.png" alt="darth vader"/>
             <p>You got ${score} / 10</p>
             <p>Your ability to use the force has diminished.</p>

@@ -33,7 +33,7 @@ header::after {
     float: left;
     padding-left: 1.04166666%;
     padding-right: 1.04166666%;
-    animation: glow 1.5s linear infinite;
+    animation: glow-black 1.5s linear infinite;
 }
 .col-4 {
     width: 33.33%
@@ -72,7 +72,7 @@ h1 {
     font-size: 2em;
     text-transform: uppercase;
     font-weight: bold;
-    animation: glow-red 1.5s linear infinite;
+    animation: glow-black 1.5s linear infinite;
 }
 button {
     padding: 20px;
@@ -139,17 +139,17 @@ h2 {
     margin-bottom: 40px;
     color: #ffffff;
     text-transform: uppercase;
-    animation: glow-red 1.5s linear infinite;
+    animation: glow-black 1.5s linear infinite;
 }
-@keyframes glow-red {
+@keyframes glow-black {
   from {
-    text-shadow: 0 0 9px red; 
+    text-shadow: 0 0 9px black; 
   }
   50% {
-    text-shadow: 0 0 18px red; 
+    text-shadow: 0 0 18px black; 
   }
   to {
-    text-shadow: 0 0 9px red; 
+    text-shadow: 0 0 9px black; 
   }
 }
 @keyframes glow-blue {
@@ -206,7 +206,7 @@ form button:hover, form button:focus {
 }
 .correctFeedback span {
     color: #ffffff;
-    animation: glow-red 1.5s linear infinite;
+    animation: glow-black 1.5s linear infinite;
 }
 .correctFeedback img {
     width: 150px;
@@ -220,7 +220,7 @@ form button:hover, form button:focus {
 }
 h3 {
     color: #ffffff;
-    animation: glow-red 1.5s linear infinite;
+    animation: glow-black 1.5s linear infinite;
     font-size: 40px;
     margin-bottom: 20px;
 }
@@ -232,14 +232,14 @@ h3 {
     font-size: 25px;
     margin-bottom: 10px;
     color: #ffffff;
-    animation: glow-red 1.5s linear infinite;
+    animation: glow-black 1.5s linear infinite;
 }
 .results p {
     font-size: 18px;
     line-height: 30px;
     margin-bottom: 0;
     color: #ffffff;
-    animation: glow-red 1.5s linear infinite;
+    animation: glow-black 1.5s linear infinite;
 }
 .restartButton {
     margin-top: 40px
@@ -304,10 +304,10 @@ h3 {
     }
     .results p:first-of-type {
         font-size: 18px;
-        animation: glow-red 1.5s linear infinite;
+        animation: glow-black 1.5s linear infinite;
     }
     h3 {
         font-size: 25px;
-        animation: glow-red 1.5s linear infinite;
+        animation: glow-black 1.5s linear infinite;
     }
 }
