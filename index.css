@@ -3,10 +3,13 @@
     padding: 0;
     box-sizing: border-box;
 }
+body, html {
+    height: 100%;
+  }
 body {
     font-family: 'Metrophobic', sans-serif;
-    background-color: #000000;
-    background: url('tatooine-background.jpg') fixed;
+    background: url('tatooine-background.jpg') center;
+    background-repeat: no-repeat;
     background-size: cover;
     color: #ffffff;
 }
@@ -14,32 +17,11 @@ body {
 
 header {
     width: 100%;
-    padding: 30px 0;
+    padding-top: 30px;
     color: #ffffff;
     font-size: 20px;
-}
-/* Clearfix */
-
-header::before,
-header::after {
-    display: table;
-    content: '';
-}
-header::after {
-    clear: both;
-}
-.col-4,
-.col-8 {
-    float: left;
-    padding-left: 1.04166666%;
-    padding-right: 1.04166666%;
-    animation: glow-black 1.5s linear infinite;
-}
-.col-4 {
-    width: 33.33%;
-}
-.col-8 {
-    width: 66.67%;
+    display: flex;
+    justify-content: space-between;
 }
 .logo {
     height: 150px;
@@ -48,14 +30,11 @@ header::after {
 header ul li {
     padding: 10px 20px;
     list-style: none;
-    text-align: center;
     font-size: 25px;
     text-transform: uppercase;
     display: inline;
-}
-header ul {
-    text-align: right;
-    margin-top: 50px;
+    justify-content: space-between;
+    animation: glow-black 1.5s linear infinite;
 }
 /*Quiz start screen styling*/
 
@@ -94,7 +73,7 @@ main div {
     margin: 0 auto;
 }
 label {
-    padding: 20px;
+    padding: 10px 20px;
     margin-bottom: 10px;
     display: flex;
     background-color: #ececec;
@@ -257,6 +236,12 @@ h3 {
     margin-top: 40px;
 }
 @media screen and (max-width: 1190px) {
+    .logo {
+        height: 75px;
+        width: 75px;
+        width: 120px;
+        height: 120px;
+    }
     .questionAnswerForm,
     .quizStart {
         width: 80%;
@@ -265,8 +250,8 @@ h3 {
 }
 @media screen and (max-width: 815px) {
     .logo {
-        width: 120px;
-        height: 120px;
+        height: 75px;
+        width: 75px;
         display: block;
         margin: auto;
     }
@@ -304,7 +289,10 @@ h3 {
     }
     label {
         font-size: 16px;
-        padding: 15px;
+        padding: 10px 15px;
+    }
+    form button {
+        padding: 15px 20px;
     }
     .correctFeedback img {
         width: 100px;
