@@ -5,7 +5,7 @@ const STORE = [
         'Revenge of the Sith',
         'Attack of the Clones',
         'Return of the Jedi',
-        'Star Wars'
+        'Star Wars: A New Hope'
         ],
       correctAnswer: 'Revenge of the Sith'
     },
@@ -60,7 +60,7 @@ const STORE = [
       correctAnswer: 'Han Solo'
     },
     {
-      question: 'What character did George Lucas consider making a midget?',
+      question: 'What character did George Lucas consider casting as a person with dwarfism?',
       answers: [
       'Princess Leia',
       'Jar Jar Binks',
