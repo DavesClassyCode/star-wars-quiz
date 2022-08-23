@@ -69,6 +69,17 @@ button:hover, button:focus {
     background-color: #eb52d2;
     color: #ffffff;
 }
+.startButton {
+    border-radius: 50px;
+    border: solid 2.4px rgb(220, 249, 249);
+    animation: glow-box-blue 1.5s linear infinite;
+}
+.startButton:hover {
+    background-color: #363946;
+}
+.startButton:hover > span {
+    animation: glow-white 1.5s linear infinite;
+}
 main div {
     margin: 0 auto;
 }
@@ -131,6 +142,17 @@ h2 {
     text-shadow: 0 0 9px black; 
   }
 }
+@keyframes glow-white {
+    from {
+      text-shadow: 0 0 9px white; 
+    }
+    50% {
+      text-shadow: 0 0 18px white; 
+    }
+    to {
+      text-shadow: 0 0 9px white; 
+    }
+}
 @keyframes glow-blue {
     from {
       text-shadow: 0 0 9px aqua; 
@@ -151,6 +173,17 @@ h2 {
     }
     to {
       text-shadow: 0 0 9px red; 
+    }
+}
+@keyframes glow-box-blue {
+    from {
+      box-shadow: 0 0 13px aqua; 
+    }
+    50% {
+      box-shadow: 0 0 55px aqua; 
+    }
+    to {
+      box-shadow: 0 0 13px aqua; 
     }
 }
 form button {
