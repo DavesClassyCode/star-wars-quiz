@@ -8,7 +8,7 @@ body, html {
   }
 body {
     font-family: 'Metrophobic', sans-serif;
-    background: url('tatooine-background.jpg') center;
+    background: url('img/tatooine-background.jpg') center;
     background-repeat: no-repeat;
     background-size: cover;
     color: #ffffff;

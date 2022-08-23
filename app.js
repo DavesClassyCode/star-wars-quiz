@@ -97,7 +97,7 @@ function userAnswerFeedbackCorrect () {
   let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
   $('.questionAnswerForm').html(`<div class="correctFeedback">
   <div class="icon">
-      <img src="rebel-emblem.png" alt="rebel alliance emblem"/>
+      <img src="img/rebel-emblem.png" alt="rebel alliance emblem"/>
   </div>
   <p><b>You got it right!</b></p>
   <button type=button class="nextButton">Next</button>
@@ -110,7 +110,7 @@ function userAnswerFeedbackWrong () {
   // let iconImage = `${STORE[questionNumber].icon}`;
   $('.questionAnswerForm').html(`<div class="correctFeedback">
   <div class="icon">
-      <img src="imperial-emblem.png" alt="imperial emblem"/>
+      <img src="img/imperial-emblem.png" alt="imperial emblem"/>
   </div>
   <p><b>You got it wrong</b><br>the correct answer is <span>"${correctAnswer}"</span></p>
   <button type=button class="nextButton">Next</button>
@@ -128,7 +128,7 @@ function renderResults () {
   if (score >= 8) {
     $('.questionAnswerForm').html(`<div class="results correctFeedback">
             <h3>The force is strong with you!</h3>
-            <img src="yoda.png" alt="yoda"/>
+            <img src="img/yoda.png" alt="yoda"/>
             <p>You got ${score} / 10</p>
             <p>You could be a powerful ally.</p>
             <button class="restartButton">Restart Quiz</button>
@@ -137,7 +137,7 @@ function renderResults () {
   } else if (score < 8 && score >= 5) {
     $('.questionAnswerForm').html(`<div class="results correctFeedback">
             <h3>Aren't you a little short for a stormtrooper?</h3>
-            <img src="stormtrooper.png" alt="stormtrooper"/>
+            <img src="img/stormtrooper.png" alt="stormtrooper"/>
             <p>You got ${score} / 10</p>
             <p>You should consider studying at the imperial academy.</p>
             <button class="restartButton">Restart Quiz</button>
@@ -145,7 +145,7 @@ function renderResults () {
   } else {
     $('.questionAnswerForm').html(`<div class="results correctFeedback">
             <h3>You have failed me for the last time!</h3>
-            <img src="vader.png" alt="darth vader"/>
+            <img src="img/vader.png" alt="darth vader"/>
             <p>You got ${score} / 10</p>
             <p>Your ability to use the force has diminished.</p>
             <button class="restartButton">Restart Quiz</button>
