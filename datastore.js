@@ -60,7 +60,7 @@ const STORE = [
       correctAnswer: 'Han Solo'
     },
     {
-      question: 'What character did George Lucas consider casting as a person with dwarfism?',
+      question: 'For which character did George Lucas consider casting an actor with dwarfism?',
       answers: [
       'Princess Leia',
       'Jar Jar Binks',
