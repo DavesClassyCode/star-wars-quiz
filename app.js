@@ -34,14 +34,14 @@ function generateQuestion() {
 } else {
     renderResults();
     restartQuiz();
-    $('.js-questionNumber').text(10)
+    $('.js-question-number').text(10)
   }
 }
 
 //increment question number
 function nextQuestion() {
     questionNumber ++;
-  $('.js-questionNumber').text(questionNumber+1);
+  $('.js-question-number').text(questionNumber+1);
 }
 
 //increment score
@@ -56,7 +56,7 @@ function startQuiz() {
   $('.quizStart').on('click', '.startButton', function (event) {
     $('.quizStart').remove();
     $('.questionAnswerForm').css('display', 'block');
-    $('.js-questionNumber').text(1);
+    $('.js-question-number').text(1);
 });
 }
 
