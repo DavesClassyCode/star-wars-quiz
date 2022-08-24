@@ -1,4 +1,6 @@
-const STORE = [
+const STORE = {
+  questions:
+  [
     {
       question: 'Which Star Wars movie was filmed entirely in the studio?',
       answers: [
@@ -99,4 +101,8 @@ const STORE = [
     ],
     correctAnswer: 'Panther'
     }
-];
+  ],
+  quizStarted: false,
+  questionNumber: 0,
+  score: 0
+};
