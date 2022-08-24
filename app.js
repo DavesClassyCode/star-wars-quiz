@@ -55,6 +55,7 @@ function startQuiz() {
   $('.quizStart').on('click', '.startButton', function (event) {
     $('.quizStart').remove();
     $('.questionAnswerForm').css('display', 'block');
+    $('.score-container').removeAttr('hidden');
     $('.js-question-number').text(1);
 });
 }
