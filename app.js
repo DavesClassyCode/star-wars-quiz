@@ -121,7 +121,7 @@ function userAnswerFeedbackWrong() {
 //update score text
 function updateScore() {
   changeScore();
-  $('.score').text(score);
+  $('.js-score').text(score);
 }
 
 //when quiz is over this is the html for the page
