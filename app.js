@@ -1,7 +1,6 @@
 'uses strict'
 
 const questionList = STORE.questions;
-let score = 0;
 
 //generate question html
 function generateQuestion() {
@@ -46,7 +45,7 @@ function nextQuestion() {
 
 //increment score
 function changeScore() {
-  score ++;
+  STORE.score ++;
 }
 
 //start quiz
@@ -121,11 +120,12 @@ function userAnswerFeedbackWrong() {
 //update score text
 function updateScore() {
   changeScore();
-  $('.js-score').text(score);
+  $('.js-score').text(STORE.score);
 }
 
 //when quiz is over this is the html for the page
 function renderResults() {
+  const score = STORE.score;
   if (score >= 8) {
     $('.questionAnswerForm').html(`<div class="results correctFeedback">
             <h3>The force is strong with you!</h3>
