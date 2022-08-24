@@ -1,31 +1,31 @@
 'uses strict'
 
 const questionList = STORE.questions;
-let questionNumber = 0;
 let score = 0;
 
 //generate question html
 function generateQuestion() {
-  if (questionNumber < questionList.length) {
-    return `<div class="question-${questionNumber}">
-    <h2>${questionList[questionNumber].question}</h2>
+  let index = STORE.questionNumber;
+  if (index < questionList.length) {
+    return `<div class="question-${index+1}">
+    <h2>${questionList[index].question}</h2>
     <form>
     <fieldset>
     <label class="answerOption">
-    <input type="radio" value="${questionList[questionNumber].answers[0]}" name="answer" required>
-    <span>${questionList[questionNumber].answers[0]}</span>
+    <input type="radio" value="${questionList[index].answers[0]}" name="answer" required>
+    <span>${questionList[index].answers[0]}</span>
     </label>
     <label class="answerOption">
-    <input type="radio" value="${questionList[questionNumber].answers[1]}" name="answer" required>
-    <span>${questionList[questionNumber].answers[1]}</span>
+    <input type="radio" value="${questionList[index].answers[1]}" name="answer" required>
+    <span>${questionList[index].answers[1]}</span>
     </label>
     <label class="answerOption">
-    <input type="radio" value="${questionList[questionNumber].answers[2]}" name="answer" required>
-    <span>${questionList[questionNumber].answers[2]}</span>
+    <input type="radio" value="${questionList[index].answers[2]}" name="answer" required>
+    <span>${questionList[index].answers[2]}</span>
     </label>
     <label class="answerOption">
-    <input type="radio" value="${questionList[questionNumber].answers[3]}" name="answer" required>
-    <span>${questionList[questionNumber].answers[3]}</span>
+    <input type="radio" value="${questionList[index].answers[3]}" name="answer" required>
+    <span>${questionList[index].answers[3]}</span>
     </label>
     <button type="submit" class="submitButton">Submit</button>
     </fieldset>
@@ -40,8 +40,8 @@ function generateQuestion() {
 
 //increment question number
 function nextQuestion() {
-    questionNumber ++;
-  $('.js-question-number').text(questionNumber+1);
+  STORE.questionNumber ++;
+  $('.js-question-number').text(STORE.questionNumber+1);
 }
 
 //increment score
@@ -69,9 +69,10 @@ function renderQuestion() {
 function userSelectAnswer() {
   $('form').on('submit', function (event) {
     event.preventDefault();
+    let index = STORE.questionNumber;
     let selected = $('input:checked');
     let answer = selected.val();
-    let correctAnswer = `${questionList[questionNumber].correctAnswer}`;
+    let correctAnswer = `${questionList[index].correctAnswer}`;
     if (answer === correctAnswer) {
       selected.parent().addClass('correct');
       ifAnswerIsCorrect();
@@ -93,7 +94,8 @@ function ifAnswerIsWrong() {
 
 //user feedback for correct answer
 function userAnswerFeedbackCorrect() {
-  let correctAnswer = `${questionList[questionNumber].correctAnswer}`;
+  let index = STORE.questionNumber;
+  const correctAnswer = `${questionList[index].correctAnswer}`;
   $('.questionAnswerForm').html(`<div class="correctFeedback">
   <div class="icon">
       <img src="img/rebel-emblem.png" alt="rebel alliance emblem"/>
@@ -105,8 +107,8 @@ function userAnswerFeedbackCorrect() {
 
 //user feedback for wrong answer
 function userAnswerFeedbackWrong() {
-  let correctAnswer = `${questionList[questionNumber].correctAnswer}`;
-  // let iconImage = `${questionList[questionNumber].icon}`;
+  let index = STORE.questionNumber;
+  const correctAnswer = `${questionList[index].correctAnswer}`;
   $('.questionAnswerForm').html(`<div class="correctFeedback">
   <div class="icon">
       <img src="img/imperial-emblem.png" alt="imperial emblem"/>
