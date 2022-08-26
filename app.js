@@ -109,6 +109,19 @@ function generateResultsHTML() {
   }
 }
 
+
+//start quiz
+//on startQuizButton click hide start div
+//unhide quiz form div
+function startQuiz() {
+  $('main').on('click', '#start-button', function (event) {
+    STORE.quizStarted = true;
+    renderQuestion();
+    $('.score-container').removeAttr('hidden');
+    $('.js-question-number').text(1);
+  });
+}
+
 //increment question number
 function nextQuestion() {
   const questionList = STORE.questions;
@@ -121,6 +134,7 @@ function nextQuestion() {
 //increment score
 function increaseScore() {
   STORE.score ++;
+  $('.js-score').text(STORE.score);
 }
 
 //user selects answer on submit run user feedback
@@ -144,20 +158,13 @@ function handleQuestionFormSubmit() {
 
 function ifAnswerIsCorrect() {
   generateCorrectAnswerFeedbackHTML();
-  updateScore();
+  increaseScore();
 }
 
 function ifAnswerIsWrong() {
   generateWrongAnswerFeedbackHTML();
 }
 
-
-
-//update score text
-function updateScore() {
-  increaseScore();
-  $('.js-score').text(STORE.score);
-}
 
 
 
@@ -189,17 +196,7 @@ function renderQuestion() {
   $('main').html(generateQuestionHTML());
 }
 
-//start quiz
-//on startQuizButton click hide start div
-//unhide quiz form div
-function startQuiz() {
-  $('main').on('click', '#start-button', function (event) {
-    STORE.quizStarted = true;
-    renderQuestion();
-    $('.score-container').removeAttr('hidden');
-    $('.js-question-number').text(1);
-  });
-}
+
 
 
 
