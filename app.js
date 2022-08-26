@@ -57,7 +57,7 @@ function generateCorrectAnswerFeedbackHTML() {
       <img src="img/rebel-emblem.png" alt="rebel alliance emblem"/>
   </div>
   <p><b>You got it right!</b></p>
-  <button type="button" class="nextButton">Next</button>
+  <button type="button" id="next-button">Next</button>
 </div>`);
 }
 
@@ -70,7 +70,7 @@ function generateWrongAnswerFeedbackHTML() {
       <img src="img/imperial-emblem.png" alt="imperial emblem"/>
   </div>
   <p><b>You got it wrong</b><br>the correct answer is <span>"${correctAnswer}"</span></p>
-  <button type="button" class="nextButton">Next</button>
+  <button type="button" id="next-button">Next</button>
 </div>`);
 }
 
@@ -136,7 +136,7 @@ function handleQuestionFormSubmission() {
 }
 
 function handleNextButtonClick() {
-  $('main').on('click', '.nextButton', function (event) {
+  $('main').on('click', '#next-button', function (event) {
     const questionList = STORE.questions;
     STORE.questionNumber++;
     if (STORE.questionNumber < questionList.length) {
@@ -146,18 +146,12 @@ function handleNextButtonClick() {
   });
 }
 
-//restart quiz function - reloads page to start quiz over
-//Needs Work
-function restartQuiz() {
-  STORE.quizStarted = false;
-  STORE.currentQuestion = 0;
-  STORE.score = 0;
-  createQuiz();
-}
-
 function handleRestartQuizButtonClick() {
   $('main').on('click', '.restartButton', function (event) {
-    restartQuiz(); //Needs Work
+    STORE.quizStarted = false;
+    STORE.currentQuestion = 0;
+    STORE.score = 0;
+    createQuiz();
   });
 }
 
@@ -166,11 +160,6 @@ function renderQuestion() {
   $('main').html(generateQuestionHTML());
 }
 
-
-
-
-
-//run quiz functions
 function createQuiz() {
   $('main').html(generateStartScreenHTML());
   handleStartButtonClick();
