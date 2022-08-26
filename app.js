@@ -50,8 +50,6 @@ function generateQuestionHTML() {
     </div>`;
 } else {
   generateResultsHTML();
-    //$('.js-question-number').text(10)
-    //$('.js-question-number').text(STORE.questionNumber);
   }
 }
 
