@@ -50,7 +50,8 @@ function generateQuestionHTML() {
     </div>`;
 } else {
   generateResultsHTML();
-    $('.js-question-number').text(10)
+    //$('.js-question-number').text(10)
+    //$('.js-question-number').text(STORE.questionNumber);
   }
 }
 
@@ -112,8 +113,11 @@ function generateResultsHTML() {
 
 //increment question number
 function nextQuestion() {
+  const questionList = STORE.questions;
   STORE.questionNumber ++;
-  $('.js-question-number').text(STORE.questionNumber+1);
+  if (STORE.questionNumber < questionList.length) {
+    $('.js-question-number').text(STORE.questionNumber+1);
+  }
 }
 
 //increment score
