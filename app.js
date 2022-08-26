@@ -53,7 +53,7 @@ function generateQuestionHTML() {
   }
 }
 
-//user feedback for correct answer
+//Generate Correct Answer Feedback
 function generateCorrectAnswerFeedbackHTML() {
   $('.questionAnswerFormContainer').html(`<div class="correctFeedback">
   <div class="icon">
@@ -64,7 +64,7 @@ function generateCorrectAnswerFeedbackHTML() {
 </div>`);
 }
 
-//user feedback for wrong answer
+//Generate Wrong Answer Feedback
 function generateWrongAnswerFeedbackHTML() {
   const questionList = STORE.questions;
   let index = STORE.questionNumber;
@@ -78,7 +78,7 @@ function generateWrongAnswerFeedbackHTML() {
 </div>`);
 }
 
-//when quiz is over this is the html for the page
+//Generate Quiz Results
 function generateResultsHTML() {
   const score = STORE.score;
   if (score >= 8) {
@@ -109,11 +109,12 @@ function generateResultsHTML() {
   }
 }
 
+/********** EVENT HANDLER FUNCTIONS **********/
 
 //start quiz
 //on startQuizButton click hide start div
 //unhide quiz form div
-function startQuiz() {
+function handleStartButtonClick() {
   $('main').on('click', '#start-button', function (event) {
     STORE.quizStarted = true;
     renderQuestion();
@@ -203,7 +204,7 @@ function renderQuestion() {
 //run quiz functions
 function createQuiz() {
   $('main').html(generateStartScreenHTML());
-  startQuiz();
+  handleStartButtonClick();
   handleQuestionFormSubmit();
   renderNextQuestion();
   handleRestartQuizButtonClick();
