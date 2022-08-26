@@ -137,23 +137,14 @@ function handleQuestionFormSubmission() {
 
 function handleNextButtonClick() {
   $('main').on('click', '.nextButton', function (event) {
-    nextQuestion();
+    const questionList = STORE.questions;
+    STORE.questionNumber++;
+    if (STORE.questionNumber < questionList.length) {
+      $('.js-question-number').text(STORE.questionNumber + 1);
+    }
     renderQuestion();
   });
 }
-
-//increment question number
-function nextQuestion() {
-  const questionList = STORE.questions;
-  STORE.questionNumber++;
-  if (STORE.questionNumber < questionList.length) {
-    $('.js-question-number').text(STORE.questionNumber + 1);
-  }
-}
-
-
-
-
 
 //restart quiz function - reloads page to start quiz over
 //Needs Work
