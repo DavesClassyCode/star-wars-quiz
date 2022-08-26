@@ -1,17 +1,13 @@
 'uses strict'
 
-const questionList = STORE.questions;
-
-/*
-    Dynamic HTML Generators
-*/
+/********** TEMPLATE GENERATION FUNCTIONS **********/
 
 //Generate Start Screen
 function generateStartScreenHTML() {
   return `
   <div class="quizStart">
     <h1>Test your Star Wars trivia knowledge!</h1>
-    <button type="button" class="startButton"><span>May the Force be with you!</span></button>
+    <button type="button" id="start-button"><span>May the Force be with you!</span></button>
   </div>`;
 }
 
@@ -22,7 +18,9 @@ function generateQuestionNumberAndScoreHTML(){
 
 //Generate Question
 function generateQuestionHTML() {
+  const questionList = STORE.questions;
   let index = STORE.questionNumber;
+  
   if (index < questionList.length) {
     return `<div class="questionAnswerFormContainer">
       <div class="question-${index+1}">
@@ -56,6 +54,31 @@ function generateQuestionHTML() {
   }
 }
 
+//user feedback for correct answer
+function generateCorrectAnswerFeedbackHTML() {
+  $('.questionAnswerFormContainer').html(`<div class="correctFeedback">
+  <div class="icon">
+      <img src="img/rebel-emblem.png" alt="rebel alliance emblem"/>
+  </div>
+  <p><b>You got it right!</b></p>
+  <button type="button" class="nextButton">Next</button>
+</div>`);
+}
+
+//user feedback for wrong answer
+function generateWrongAnswerFeedbackHTML() {
+  const questionList = STORE.questions;
+  let index = STORE.questionNumber;
+  const correctAnswer = `${questionList[index].correctAnswer}`;
+  $('.questionAnswerFormContainer').html(`<div class="correctFeedback">
+  <div class="icon">
+      <img src="img/imperial-emblem.png" alt="imperial emblem"/>
+  </div>
+  <p><b>You got it wrong</b><br>the correct answer is <span>"${correctAnswer}"</span></p>
+  <button type="button" class="nextButton">Next</button>
+</div>`);
+}
+
 //increment question number
 function nextQuestion() {
   STORE.questionNumber ++;
@@ -71,6 +94,7 @@ function increaseScore() {
 function handleQuestionFormSubmit() {
   $('body').on('submit', '.js-question-form', function (event) {
     event.preventDefault();
+    const questionList = STORE.questions;
     let index = STORE.questionNumber;
     let selected = $('input:checked');
     let answer = selected.val();
@@ -86,39 +110,15 @@ function handleQuestionFormSubmit() {
 }
 
 function ifAnswerIsCorrect() {
-  userAnswerFeedbackCorrect();
+  generateCorrectAnswerFeedbackHTML();
   updateScore();
 }
 
 function ifAnswerIsWrong() {
-  userAnswerFeedbackWrong();
+  generateWrongAnswerFeedbackHTML();
 }
 
-//user feedback for correct answer
-function userAnswerFeedbackCorrect() {
-  let index = STORE.questionNumber;
-  const correctAnswer = `${questionList[index].correctAnswer}`;
-  $('.questionAnswerFormContainer').html(`<div class="correctFeedback">
-  <div class="icon">
-      <img src="img/rebel-emblem.png" alt="rebel alliance emblem"/>
-  </div>
-  <p><b>You got it right!</b></p>
-  <button type="button" class="nextButton">Next</button>
-</div>`);
-}
 
-//user feedback for wrong answer
-function userAnswerFeedbackWrong() {
-  let index = STORE.questionNumber;
-  const correctAnswer = `${questionList[index].correctAnswer}`;
-  $('.questionAnswerFormContainer').html(`<div class="correctFeedback">
-  <div class="icon">
-      <img src="img/imperial-emblem.png" alt="imperial emblem"/>
-  </div>
-  <p><b>You got it wrong</b><br>the correct answer is <span>"${correctAnswer}"</span></p>
-  <button type="button" class="nextButton">Next</button>
-</div>`);
-}
 
 //update score text
 function updateScore() {
@@ -189,7 +189,8 @@ function renderQuestion() {
 //on startQuizButton click hide start div
 //unhide quiz form div
 function startQuiz() {
-  $('.quizStart').on('click', '.startButton', function (event) {
+  $('main').on('click', '#start-button', function (event) {
+    STORE.quizStarted = true;
     renderQuestion();
     $('.score-container').removeAttr('hidden');
     $('.js-question-number').text(1);
