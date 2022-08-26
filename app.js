@@ -12,7 +12,7 @@ function generateStartScreenHTML() {
 }
 
 //Generate Current Question Number and Score
-function generateQuestionNumberAndScoreHTML(){
+function generateQuestionNumberAndScoreHTML() {
 
 }
 
@@ -20,10 +20,10 @@ function generateQuestionNumberAndScoreHTML(){
 function generateQuestionHTML() {
   const questionList = STORE.questions;
   let index = STORE.questionNumber;
-  
+
   if (index < questionList.length) {
     return `<div class="questionAnswerFormContainer">
-      <div class="question-${index+1}">
+      <div class="question-${index + 1}">
         <h2>${questionList[index].question}</h2>
         <form id="questoin-form" class="js-question-form">
           <fieldset>
@@ -48,8 +48,8 @@ function generateQuestionHTML() {
         </form>
       </div>
     </div>`;
-} else {
-  generateResultsHTML();
+  } else {
+    generateResultsHTML();
   }
 }
 
@@ -123,15 +123,6 @@ function handleStartButtonClick() {
   });
 }
 
-//increment question number
-function nextQuestion() {
-  const questionList = STORE.questions;
-  STORE.questionNumber ++;
-  if (STORE.questionNumber < questionList.length) {
-    $('.js-question-number').text(STORE.questionNumber+1);
-  }
-}
-
 //user selects answer on submit run user feedback
 function handleQuestionFormSubmit() {
   $('body').on('submit', '.js-question-form', function (event) {
@@ -144,7 +135,7 @@ function handleQuestionFormSubmit() {
     if (answer === correctAnswer) {
       selected.parent().addClass('correct');
       generateCorrectAnswerFeedbackHTML();
-      STORE.score ++;
+      STORE.score++;
       $('.js-score').text(STORE.score);
     } else {
       selected.parent().addClass('wrong');
@@ -152,6 +143,17 @@ function handleQuestionFormSubmit() {
     }
   });
 }
+
+//increment question number
+function nextQuestion() {
+  const questionList = STORE.questions;
+  STORE.questionNumber++;
+  if (STORE.questionNumber < questionList.length) {
+    $('.js-question-number').text(STORE.questionNumber + 1);
+  }
+}
+
+
 
 //what happens when the user clicks next
 function renderNextQuestion() {
