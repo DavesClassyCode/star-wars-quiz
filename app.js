@@ -135,6 +135,13 @@ function handleQuestionFormSubmission() {
   });
 }
 
+function handleNextButtonClick() {
+  $('main').on('click', '.nextButton', function (event) {
+    nextQuestion();
+    renderQuestion();
+  });
+}
+
 //increment question number
 function nextQuestion() {
   const questionList = STORE.questions;
@@ -146,13 +153,7 @@ function nextQuestion() {
 
 
 
-//what happens when the user clicks next
-function renderNextQuestion() {
-  $('main').on('click', '.nextButton', function (event) {
-    nextQuestion();
-    renderQuestion();
-  });
-}
+
 
 //restart quiz function - reloads page to start quiz over
 //Needs Work
@@ -183,7 +184,7 @@ function createQuiz() {
   $('main').html(generateStartScreenHTML());
   handleStartButtonClick();
   handleQuestionFormSubmission();
-  renderNextQuestion();
+  handleNextButtonClick();
   handleRestartQuizButtonClick();
 }
 
