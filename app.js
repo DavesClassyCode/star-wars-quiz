@@ -132,12 +132,6 @@ function nextQuestion() {
   }
 }
 
-//increment score
-function increaseScore() {
-  STORE.score ++;
-  $('.js-score').text(STORE.score);
-}
-
 //user selects answer on submit run user feedback
 function handleQuestionFormSubmit() {
   $('body').on('submit', '.js-question-form', function (event) {
@@ -149,25 +143,15 @@ function handleQuestionFormSubmit() {
     let correctAnswer = `${questionList[index].correctAnswer}`;
     if (answer === correctAnswer) {
       selected.parent().addClass('correct');
-      ifAnswerIsCorrect();
+      generateCorrectAnswerFeedbackHTML();
+      STORE.score ++;
+      $('.js-score').text(STORE.score);
     } else {
       selected.parent().addClass('wrong');
-      ifAnswerIsWrong();
+      generateWrongAnswerFeedbackHTML();
     }
   });
 }
-
-function ifAnswerIsCorrect() {
-  generateCorrectAnswerFeedbackHTML();
-  increaseScore();
-}
-
-function ifAnswerIsWrong() {
-  generateWrongAnswerFeedbackHTML();
-}
-
-
-
 
 //what happens when the user clicks next
 function renderNextQuestion() {
