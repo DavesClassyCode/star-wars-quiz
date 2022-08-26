@@ -3,9 +3,7 @@
 const questionList = STORE.questions;
 
 /*
-
-Dynamic HTML Generators
-
+    Dynamic HTML Generators
 */
 
 //Generate Start Screen
@@ -65,7 +63,7 @@ function nextQuestion() {
 }
 
 //increment score
-function changeScore() {
+function increaseScore() {
   STORE.score ++;
 }
 
@@ -124,7 +122,7 @@ function userAnswerFeedbackWrong() {
 
 //update score text
 function updateScore() {
-  changeScore();
+  increaseScore();
   $('.js-score').text(STORE.score);
 }
 
