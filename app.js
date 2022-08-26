@@ -77,8 +77,6 @@ function handleQuestionFormSubmit() {
     let selected = $('input:checked');
     let answer = selected.val();
     let correctAnswer = `${questionList[index].correctAnswer}`;
-    console.log('handleQuestionFormSubmit() ran');
-    console.log(`answer: ${answer}, correctAnswer: ${correctAnswer}`);
     if (answer === correctAnswer) {
       selected.parent().addClass('correct');
       ifAnswerIsCorrect();
@@ -90,13 +88,11 @@ function handleQuestionFormSubmit() {
 }
 
 function ifAnswerIsCorrect() {
-  console.log('ifAnswerIsCorrect() ran');
   userAnswerFeedbackCorrect();
   updateScore();
 }
 
 function ifAnswerIsWrong() {
-  console.log('ifAnswerIsWrong() ran');
   userAnswerFeedbackWrong();
 }
 
