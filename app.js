@@ -49,7 +49,7 @@ function generateQuestionHTML() {
       </div>
     </div>`;
 } else {
-    renderResults();
+  generateResultsHTML();
     $('.js-question-number').text(10)
   }
 }
@@ -77,6 +77,37 @@ function generateWrongAnswerFeedbackHTML() {
   <p><b>You got it wrong</b><br>the correct answer is <span>"${correctAnswer}"</span></p>
   <button type="button" class="nextButton">Next</button>
 </div>`);
+}
+
+//when quiz is over this is the html for the page
+function generateResultsHTML() {
+  const score = STORE.score;
+  if (score >= 8) {
+    $('.questionAnswerFormContainer').html(`<div class="results correctFeedback">
+            <h3>The force is strong with you!</h3>
+            <img src="img/yoda.png" alt="yoda"/>
+            <p>You got ${score} / 10</p>
+            <p>You could be a powerful ally.</p>
+            <button class="restartButton">Restart Quiz</button>
+          </div>
+      </div>`);
+  } else if (score < 8 && score >= 5) {
+    $('.questionAnswerFormContainer').html(`<div class="results correctFeedback">
+            <h3>Aren't you a little short for a stormtrooper?</h3>
+            <img src="img/stormtrooper.png" alt="stormtrooper"/>
+            <p>You got ${score} / 10</p>
+            <p>You should consider studying at the imperial academy.</p>
+            <button class="restartButton">Restart Quiz</button>
+          </div>`);
+  } else {
+    $('.questionAnswerFormContainer').html(`<div class="results correctFeedback">
+            <h3>You have failed me for the last time!</h3>
+            <img src="img/vader.png" alt="darth vader"/>
+            <p>You got ${score} / 10</p>
+            <p>Your ability to use the force has diminished.</p>
+            <button class="restartButton">Restart Quiz</button>
+          </div>`);
+  }
 }
 
 //increment question number
@@ -126,36 +157,7 @@ function updateScore() {
   $('.js-score').text(STORE.score);
 }
 
-//when quiz is over this is the html for the page
-function renderResults() {
-  const score = STORE.score;
-  if (score >= 8) {
-    $('.questionAnswerFormContainer').html(`<div class="results correctFeedback">
-            <h3>The force is strong with you!</h3>
-            <img src="img/yoda.png" alt="yoda"/>
-            <p>You got ${score} / 10</p>
-            <p>You could be a powerful ally.</p>
-            <button class="restartButton">Restart Quiz</button>
-          </div>
-      </div>`);
-  } else if (score < 8 && score >= 5) {
-    $('.questionAnswerFormContainer').html(`<div class="results correctFeedback">
-            <h3>Aren't you a little short for a stormtrooper?</h3>
-            <img src="img/stormtrooper.png" alt="stormtrooper"/>
-            <p>You got ${score} / 10</p>
-            <p>You should consider studying at the imperial academy.</p>
-            <button class="restartButton">Restart Quiz</button>
-          </div>`);
-  } else {
-    $('.questionAnswerFormContainer').html(`<div class="results correctFeedback">
-            <h3>You have failed me for the last time!</h3>
-            <img src="img/vader.png" alt="darth vader"/>
-            <p>You got ${score} / 10</p>
-            <p>Your ability to use the force has diminished.</p>
-            <button class="restartButton">Restart Quiz</button>
-          </div>`);
-  }
-}
+
 
 //what happens when the user clicks next
 function renderNextQuestion() {
