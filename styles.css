@@ -69,15 +69,15 @@ button:hover, button:focus {
     background-color: #eb52d2;
     color: #ffffff;
 }
-.startButton {
+#start-button {
     border-radius: 50px;
     border: solid 2.4px rgb(220, 249, 249);
     animation: glow-box-blue 1.5s linear infinite;
 }
-.startButton:hover {
+#start-button:hover, #start-button:focus {
     background-color: #363946;
 }
-.startButton:hover > span {
+#start-button:hover > span {
     animation: glow-white 1.5s linear infinite;
 }
 main div {
