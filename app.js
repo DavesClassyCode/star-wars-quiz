@@ -2,7 +2,6 @@
 
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
-//Generate Start Screen
 function generateStartScreenHTML() {
   return `
   <div class="quizStart">
@@ -16,7 +15,6 @@ function generateQuestionNumberAndScoreHTML() {
 
 }
 
-//Generate Question
 function generateQuestionHTML() {
   const questionList = STORE.questions;
   let index = STORE.questionNumber;
@@ -53,7 +51,6 @@ function generateQuestionHTML() {
   }
 }
 
-//Generate Correct Answer Feedback
 function generateCorrectAnswerFeedbackHTML() {
   $('.questionAnswerFormContainer').html(`<div class="correctFeedback">
   <div class="icon">
@@ -64,7 +61,6 @@ function generateCorrectAnswerFeedbackHTML() {
 </div>`);
 }
 
-//Generate Wrong Answer Feedback
 function generateWrongAnswerFeedbackHTML() {
   const questionList = STORE.questions;
   let index = STORE.questionNumber;
@@ -78,7 +74,6 @@ function generateWrongAnswerFeedbackHTML() {
 </div>`);
 }
 
-//Generate Quiz Results
 function generateResultsHTML() {
   const score = STORE.score;
   if (score >= 8) {
@@ -111,9 +106,6 @@ function generateResultsHTML() {
 
 /********** EVENT HANDLER FUNCTIONS **********/
 
-//start quiz
-//on startQuizButton click hide start div
-//unhide quiz form div
 function handleStartButtonClick() {
   $('main').on('click', '#start-button', function (event) {
     STORE.quizStarted = true;
@@ -123,8 +115,7 @@ function handleStartButtonClick() {
   });
 }
 
-//user selects answer on submit run user feedback
-function handleQuestionFormSubmit() {
+function handleQuestionFormSubmission() {
   $('body').on('submit', '.js-question-form', function (event) {
     event.preventDefault();
     const questionList = STORE.questions;
@@ -191,7 +182,7 @@ function renderQuestion() {
 function createQuiz() {
   $('main').html(generateStartScreenHTML());
   handleStartButtonClick();
-  handleQuestionFormSubmit();
+  handleQuestionFormSubmission();
   renderNextQuestion();
   handleRestartQuizButtonClick();
 }
