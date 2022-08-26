@@ -80,7 +80,7 @@ function generateResultsHTML() {
     $('.questionAnswerFormContainer').html(`<div class="results correctFeedback">
             <h3>The force is strong with you!</h3>
             <img src="img/yoda.png" alt="yoda"/>
-            <p>You got ${score} / 10</p>
+            <p>You got ${score} / 10 Correct</p>
             <p>You could be a powerful ally.</p>
             <button class="restartButton">Restart Quiz</button>
           </div>
@@ -89,7 +89,7 @@ function generateResultsHTML() {
     $('.questionAnswerFormContainer').html(`<div class="results correctFeedback">
             <h3>Aren't you a little short for a stormtrooper?</h3>
             <img src="img/stormtrooper.png" alt="stormtrooper"/>
-            <p>You got ${score} / 10</p>
+            <p>You got ${score} / 10 Correct</p>
             <p>You should consider studying at the imperial academy.</p>
             <button class="restartButton">Restart Quiz</button>
           </div>`);
@@ -97,7 +97,7 @@ function generateResultsHTML() {
     $('.questionAnswerFormContainer').html(`<div class="results correctFeedback">
             <h3>You have failed me for the last time!</h3>
             <img src="img/vader.png" alt="darth vader"/>
-            <p>You got ${score} / 10</p>
+            <p>You got ${score} / 10 Correct</p>
             <p>Your ability to use the force has diminished.</p>
             <button class="restartButton">Restart Quiz</button>
           </div>`);
