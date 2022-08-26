@@ -103,6 +103,6 @@ const STORE = {
     }
   ],
   quizStarted: false,
-  questionNumber: 0,
+  currentQuestion: 0,
   score: 0
 };

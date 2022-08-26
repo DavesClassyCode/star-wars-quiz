@@ -11,44 +11,40 @@ function generateStartScreenHTML() {
 }
 
 //Generate Current Question Number and Score
-function generateQuestionNumberAndScoreHTML() {
+function generateCurrentQuestionNumberAndScoreHTML() {
 
 }
 
 function generateQuestionHTML() {
   const questionList = STORE.questions;
-  let index = STORE.questionNumber;
+  let index = STORE.currentQuestion;
 
-  if (index < questionList.length) {
-    return `<div class="questionAnswerFormContainer">
-      <div class="question-${index + 1}">
-        <h2>${questionList[index].question}</h2>
-        <form id="questoin-form" class="js-question-form">
-          <fieldset>
-            <label class="answerOption">
-            <input type="radio" value="${questionList[index].answers[0]}" name="answer" required>
-            <span>${questionList[index].answers[0]}</span>
-            </label>
-            <label class="answerOption">
-            <input type="radio" value="${questionList[index].answers[1]}" name="answer" required>
-            <span>${questionList[index].answers[1]}</span>
-            </label>
-            <label class="answerOption">
-            <input type="radio" value="${questionList[index].answers[2]}" name="answer" required>
-            <span>${questionList[index].answers[2]}</span>
-            </label>
-            <label class="answerOption">
-            <input type="radio" value="${questionList[index].answers[3]}" name="answer" required>
-            <span>${questionList[index].answers[3]}</span>
-            </label>
-            <button type="submit" class="submitButton">Submit</button>
-          </fieldset>
-        </form>
-      </div>
-    </div>`;
-  } else {
-    generateResultsHTML();
-  }
+  return `<div class="questionAnswerFormContainer">
+    <div class="question-${index + 1}">
+      <h2>${questionList[index].question}</h2>
+      <form id="questoin-form" class="js-question-form">
+        <fieldset>
+          <label class="answerOption">
+          <input type="radio" value="${questionList[index].answers[0]}" name="answer" required>
+          <span>${questionList[index].answers[0]}</span>
+          </label>
+          <label class="answerOption">
+          <input type="radio" value="${questionList[index].answers[1]}" name="answer" required>
+          <span>${questionList[index].answers[1]}</span>
+          </label>
+          <label class="answerOption">
+          <input type="radio" value="${questionList[index].answers[2]}" name="answer" required>
+          <span>${questionList[index].answers[2]}</span>
+          </label>
+          <label class="answerOption">
+          <input type="radio" value="${questionList[index].answers[3]}" name="answer" required>
+          <span>${questionList[index].answers[3]}</span>
+          </label>
+          <button type="submit" class="submitButton">Submit</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>`;
 }
 
 function generateCorrectAnswerFeedbackHTML() {
@@ -63,7 +59,7 @@ function generateCorrectAnswerFeedbackHTML() {
 
 function generateWrongAnswerFeedbackHTML() {
   const questionList = STORE.questions;
-  let index = STORE.questionNumber;
+  let index = STORE.currentQuestion;
   const correctAnswer = `${questionList[index].correctAnswer}`;
   $('.questionAnswerFormContainer').html(`<div class="correctFeedback">
   <div class="icon">
@@ -80,26 +76,26 @@ function generateResultsHTML() {
     $('.questionAnswerFormContainer').html(`<div class="results correctFeedback">
             <h3>The force is strong with you!</h3>
             <img src="img/yoda.png" alt="yoda"/>
-            <p>You got ${score} / 10 Correct</p>
+            <p>You got ${score} / 10 Correct!</p>
             <p>You could be a powerful ally.</p>
-            <button class="restartButton">Restart Quiz</button>
+            <button id="restart-button">Restart Quiz</button>
           </div>
       </div>`);
   } else if (score < 8 && score >= 5) {
     $('.questionAnswerFormContainer').html(`<div class="results correctFeedback">
             <h3>Aren't you a little short for a stormtrooper?</h3>
             <img src="img/stormtrooper.png" alt="stormtrooper"/>
-            <p>You got ${score} / 10 Correct</p>
+            <p>You got ${score} / 10 Correct!</p>
             <p>You should consider studying at the imperial academy.</p>
-            <button class="restartButton">Restart Quiz</button>
+            <button id="restart-button">Restart Quiz</button>
           </div>`);
   } else {
     $('.questionAnswerFormContainer').html(`<div class="results correctFeedback">
             <h3>You have failed me for the last time!</h3>
             <img src="img/vader.png" alt="darth vader"/>
-            <p>You got ${score} / 10 Correct</p>
+            <p>You got ${score} / 10 Correct!</p>
             <p>Your ability to use the force has diminished.</p>
-            <button class="restartButton">Restart Quiz</button>
+            <button id="restart-button">Restart Quiz</button>
           </div>`);
   }
 }
@@ -119,7 +115,7 @@ function handleQuestionFormSubmission() {
   $('body').on('submit', '.js-question-form', function (event) {
     event.preventDefault();
     const questionList = STORE.questions;
-    let index = STORE.questionNumber;
+    let index = STORE.currentQuestion;
     let selected = $('input:checked');
     let answer = selected.val();
     let correctAnswer = `${questionList[index].correctAnswer}`;
@@ -138,16 +134,19 @@ function handleQuestionFormSubmission() {
 function handleNextButtonClick() {
   $('main').on('click', '#next-button', function (event) {
     const questionList = STORE.questions;
-    STORE.questionNumber++;
-    if (STORE.questionNumber < questionList.length) {
-      $('.js-question-number').text(STORE.questionNumber + 1);
+    STORE.currentQuestion++;
+    if (STORE.currentQuestion < questionList.length) {
+      $('.js-question-number').text(STORE.currentQuestion + 1);
+      renderQuestion();
+    } 
+    else {
+      generateResultsHTML();
     }
-    renderQuestion();
   });
 }
 
 function handleRestartQuizButtonClick() {
-  $('main').on('click', '.restartButton', function (event) {
+  $('main').on('click', '#restart-button', function (event) {
     STORE.quizStarted = false;
     STORE.currentQuestion = 0;
     STORE.score = 0;
