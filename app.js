@@ -48,55 +48,55 @@ function generateQuestionHTML() {
 }
 
 function generateCorrectAnswerFeedbackHTML() {
-  $('.questionAnswerFormContainer').html(`<div class="correctFeedback">
+  return `<div class="correctFeedback">
   <div class="icon">
       <img src="img/rebel-emblem.png" alt="rebel alliance emblem"/>
   </div>
   <p><b>You got it right!</b></p>
   <button type="button" id="next-button">Next</button>
-</div>`);
+</div>`;
 }
 
 function generateWrongAnswerFeedbackHTML() {
   const questionList = STORE.questions;
   let index = STORE.currentQuestion;
   const correctAnswer = `${questionList[index].correctAnswer}`;
-  $('.questionAnswerFormContainer').html(`<div class="correctFeedback">
+  return `<div class="correctFeedback">
   <div class="icon">
       <img src="img/imperial-emblem.png" alt="imperial emblem"/>
   </div>
   <p><b>You got it wrong</b><br>the correct answer is <span>"${correctAnswer}"</span></p>
   <button type="button" id="next-button">Next</button>
-</div>`);
+</div>`;
 }
 
 function generateResultsHTML() {
   const score = STORE.score;
   if (score >= 8) {
-    $('.questionAnswerFormContainer').html(`<div class="results correctFeedback">
+    return `<div class="results correctFeedback">
             <h3>The force is strong with you!</h3>
             <img src="img/yoda.png" alt="yoda"/>
             <p>You got ${score} / 10 Correct!</p>
             <p>You could be a powerful ally.</p>
             <button id="restart-button">Restart Quiz</button>
           </div>
-      </div>`);
+      </div>`;
   } else if (score < 8 && score >= 5) {
-    $('.questionAnswerFormContainer').html(`<div class="results correctFeedback">
+    return `<div class="results correctFeedback">
             <h3>Aren't you a little short for a stormtrooper?</h3>
             <img src="img/stormtrooper.png" alt="stormtrooper"/>
             <p>You got ${score} / 10 Correct!</p>
             <p>You should consider studying at the imperial academy.</p>
             <button id="restart-button">Restart Quiz</button>
-          </div>`);
+          </div>`;
   } else {
-    $('.questionAnswerFormContainer').html(`<div class="results correctFeedback">
+    return `<div class="results correctFeedback">
             <h3>You have failed me for the last time!</h3>
             <img src="img/vader.png" alt="darth vader"/>
             <p>You got ${score} / 10 Correct!</p>
             <p>Your ability to use the force has diminished.</p>
             <button id="restart-button">Restart Quiz</button>
-          </div>`);
+          </div>`;
   }
 }
 
@@ -105,7 +105,7 @@ function generateResultsHTML() {
 function handleStartButtonClick() {
   $('main').on('click', '#start-button', function (event) {
     STORE.quizStarted = true;
-    renderQuestion();
+    render();
     $('.score-container').removeAttr('hidden');
     $('.js-question-number').text(1);
   });
@@ -121,12 +121,12 @@ function handleQuestionFormSubmission() {
     let correctAnswer = `${questionList[index].correctAnswer}`;
     if (answer === correctAnswer) {
       selected.parent().addClass('correct');
-      generateCorrectAnswerFeedbackHTML();
+      $('.questionAnswerFormContainer').html(generateCorrectAnswerFeedbackHTML());
       STORE.score++;
       $('.js-score').text(STORE.score);
     } else {
       selected.parent().addClass('wrong');
-      generateWrongAnswerFeedbackHTML();
+      $('.questionAnswerFormContainer').html(generateWrongAnswerFeedbackHTML());
     }
   });
 }
@@ -137,11 +137,8 @@ function handleNextButtonClick() {
     STORE.currentQuestion++;
     if (STORE.currentQuestion < questionList.length) {
       $('.js-question-number').text(STORE.currentQuestion + 1);
-      renderQuestion();
-    } 
-    else {
-      generateResultsHTML();
     }
+    render();
   });
 }
 
@@ -150,17 +147,23 @@ function handleRestartQuizButtonClick() {
     STORE.quizStarted = false;
     STORE.currentQuestion = 0;
     STORE.score = 0;
-    createQuiz();
+    render();
   });
 }
 
 // render question in DOM
-function renderQuestion() {
-  $('main').html(generateQuestionHTML());
+function render() {
+  if(STORE.quizStarted === false){
+    $('main').html(generateStartScreenHTML());
+  } else if (STORE.currentQuestion >= 0 && STORE.currentQuestion < STORE.questions.length){
+    $('main').html(generateQuestionHTML());
+  } else {
+    $('.questionAnswerFormContainer').html(generateResultsHTML());
+  }
 }
 
 function createQuiz() {
-  $('main').html(generateStartScreenHTML());
+  render();
   handleStartButtonClick();
   handleQuestionFormSubmission();
   handleNextButtonClick();
