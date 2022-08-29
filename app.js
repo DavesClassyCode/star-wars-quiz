@@ -11,9 +11,13 @@ function generateStartScreenHTML() {
   `;
 }
 
-//Generate Current Question Number and Score
 function generateQuestionNumberAndScoreHTML() {
-  return ``
+  return `
+    <ul>
+      <li>Question: <span></span>${STORE.currentQuestion + 1}/10</li>
+      <li>Score: <span>${STORE.score}</span></li>
+    </ul>
+  `;
 }
 
 function generateQuestionHTML() {
@@ -118,8 +122,6 @@ function handleStartButtonClick() {
   $('main').on('click', '#start-button', function (event) {
     STORE.quizStarted = true;
     render();
-    $('.score-container').removeAttr('hidden');
-    $('.js-question-number').text(1);
   });
 }
 
@@ -135,7 +137,7 @@ function handleQuestionFormSubmission() {
       selected.parent().addClass('correct');
       $('.questionAnswerFormContainer').html(generateCorrectAnswerFeedbackHTML());
       STORE.score++;
-      $('.js-score').text(STORE.score);
+      $('.js-score-container').html(generateQuestionNumberAndScoreHTML());
     } else {
       selected.parent().addClass('wrong');
       $('.questionAnswerFormContainer').html(generateWrongAnswerFeedbackHTML());
@@ -145,11 +147,7 @@ function handleQuestionFormSubmission() {
 
 function handleNextButtonClick() {
   $('main').on('click', '#next-button', function (event) {
-    const questionList = STORE.questions;
     STORE.currentQuestion++;
-    if (STORE.currentQuestion < questionList.length) {
-      $('.js-question-number').text(STORE.currentQuestion + 1);
-    }
     render();
   });
 }
@@ -168,8 +166,10 @@ function render() {
   if(STORE.quizStarted === false){
     $('main').html(generateStartScreenHTML());
   } else if (STORE.currentQuestion >= 0 && STORE.currentQuestion < STORE.questions.length){
+    $('.js-score-container').html(generateQuestionNumberAndScoreHTML());
     $('main').html(generateQuestionHTML());
   } else {
+    $('.js-score-container').html('');
     $('.questionAnswerFormContainer').html(generateResultsHTML());
   }
 }
