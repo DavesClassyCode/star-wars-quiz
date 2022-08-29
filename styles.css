@@ -124,7 +124,9 @@ input[type=radio] {
     flex: 0 0 auto;
     margin-right: 10px;
 }
-h2 {
+legend {
+    font-size: 24px;
+    font-weight: bold;
     text-align: left;
     margin-bottom: 40px;
     color: #ffffff;
@@ -311,7 +313,7 @@ h3 {
         padding: 40px;
         margin-top: 0;
     }
-    h2 {
+    legend {
         font-size: 18px;
     }
     .questionAnswerFormContainer {

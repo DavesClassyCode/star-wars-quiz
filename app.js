@@ -26,30 +26,28 @@ function generateQuestionHTML() {
 
   return `
     <div class="questionAnswerFormContainer">
-      <div class="question-${index + 1}">
-        <h2>${questionList[index].question}</h2>
-        <form id="questoin-form" class="js-question-form">
-          <fieldset>
-            <label class="answerOption">
-            <input type="radio" value="${questionList[index].answers[0]}" name="answer" required>
-            <span>${questionList[index].answers[0]}</span>
-            </label>
-            <label class="answerOption">
-            <input type="radio" value="${questionList[index].answers[1]}" name="answer" required>
-            <span>${questionList[index].answers[1]}</span>
-            </label>
-            <label class="answerOption">
-            <input type="radio" value="${questionList[index].answers[2]}" name="answer" required>
-            <span>${questionList[index].answers[2]}</span>
-            </label>
-            <label class="answerOption">
-            <input type="radio" value="${questionList[index].answers[3]}" name="answer" required>
-            <span>${questionList[index].answers[3]}</span>
-            </label>
-            <button type="submit" class="submitButton">Submit</button>
-          </fieldset>
-        </form>
-      </div>
+      <form id="questoin-form" class="js-question-form">
+        <fieldset>
+          <legend>${questionList[index].question}</legend>
+          <label class="answerOption">
+          <input type="radio" value="${questionList[index].answers[0]}" name="answer" required>
+          <span>${questionList[index].answers[0]}</span>
+          </label>
+          <label class="answerOption">
+          <input type="radio" value="${questionList[index].answers[1]}" name="answer" required>
+          <span>${questionList[index].answers[1]}</span>
+          </label>
+          <label class="answerOption">
+          <input type="radio" value="${questionList[index].answers[2]}" name="answer" required>
+          <span>${questionList[index].answers[2]}</span>
+          </label>
+          <label class="answerOption">
+          <input type="radio" value="${questionList[index].answers[3]}" name="answer" required>
+          <span>${questionList[index].answers[3]}</span>
+          </label>
+          <button type="submit" class="submitButton">Submit</button>
+        </fieldset>
+      </form>
     </div>
   `;
 }
